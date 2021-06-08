@@ -2,7 +2,7 @@ import {createStore} from 'vuex'
 export default createStore({
     state:{
         panier:0,
-        product: [
+        chosure: [
         {
           "imgUrl": "https://image.shutterstock.com/z/stock-photo-pair-of-white-sneakers-isolated-on-white-background-sport-shoes-712448377.jpg",
           "name": "Sport Shoes",
@@ -23,10 +23,14 @@ export default createStore({
     getters:{
          getPanier(state){
              return state.panier
+         },
+         getProduct(state){
+           return state.chosure
          }
      },
+
      actions:{
-        increment(context){
+        count(context){
              context.commit('UpdatePanier')
          }
      },

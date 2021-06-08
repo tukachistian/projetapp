@@ -6,7 +6,7 @@
         <router-link to='/'></router-link>
  </form>
        <form action="/panier">
-        <button class="btn btn-outline-success" type="submit">Panier => </button>
+        <button class="btn btn-outline-success" type="submit">Panier {{getPanier}} </button>
         <router-link to='/panier'></router-link>
  </form>
  </div>
@@ -14,7 +14,16 @@
 </template>
 <script>
 export default {
-  name: 'navbar',
+ metthods:{
+   count:function(){
+     this.$store.commit('updatePanier')
+   }
+ },
+ computed:{
+   getPanier:function(){
+     return this.$store.getters.getPanier
+   }
+ }
  
 }
 </script>

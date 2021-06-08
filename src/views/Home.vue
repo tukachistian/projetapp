@@ -1,42 +1,36 @@
 <template>
-<div class="ligne">
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-
-</div>
+<div class="aligne">
+    <div class="card-group">
+        <div class="card" v-for="product in getProduct" v-bind:key="product" style="width: 18rem;">
+            <img v-bind:src="product.imgUrl" class="imgSize" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.price }}</p>
+                <a href="#" v-on:click="increment(product.id)" class="btn btn-primary">Ajouter au panier</a>
+            </div>
+        </div>
+    </div>
 </div>
 </template>
 <script>
 export default {
-
+  methods:{
+    increment: function(id){
+      this.$store.commit('updatePanier',id)
+    }
+  },
+  computed:{
+    getProduct:function(){
+      return this.$store.getters.getProduct
+    }
+  }
 }
 </script>
-
 <style>
-.ligne{
-display: flex;
-justify-content: center;
-align-items: center;
+.aligne{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
 }
 </style>
  
